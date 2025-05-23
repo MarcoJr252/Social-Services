@@ -9,14 +9,15 @@ const {
   forgotPassword, 
   verifyOTPForReset, 
   resetPassword, 
-  updateProfile,      // ✅ تحديث بيانات الحساب
-  uploadProfilePic,   // ✅ رفع صورة الملف الشخصي
-  deleteAccount       // ✅ حذف الحساب
+  updateProfile, 
+  uploadProfilePic, 
+  deleteAccount, 
+  verifyEmail  
 } = require("../controllers/authController");
 
 const router = express.Router();
 
-// إعداد multer لتخزين الصور في الذاكرة
+
 const storage = multer.memoryStorage();
 const upload = multer({ storage });
 
@@ -38,14 +39,16 @@ router.post("/verify-reset-otp", verifyOTPForReset);
 // Reset Password Route
 router.post("/reset-password", resetPassword);
 
-// Update Profile Route 🔹
-
+// Update Profile Route
 router.put("/update-profile", authMiddleware, updateProfile);
 
-// Upload Profile Picture Route 🔹
+// Upload Profile Picture Route
 router.post("/upload-profile-pic", authMiddleware, upload.single("profilePic"), uploadProfilePic);
 
-// Delete Account Route 🔹
+// Delete Account Route
 router.delete("/delete-account", authMiddleware, deleteAccount);
+
+// Email Verification Route
+router.get("/verify-email", verifyEmail);
 
 module.exports = router;

@@ -13,7 +13,7 @@ const sendEmail = async (to, subject, message, type = "default") => {
       },
     });
 
-    // 📌 قالب HTML احترافي
+   
     const emailTemplate = `
       <div style="max-width: 600px; margin: auto; font-family: Arial, sans-serif; border: 1px solid #ddd; border-radius: 8px; padding: 20px;">
         <h2 style="color: #2c3e50; text-align: center;">${
@@ -39,8 +39,8 @@ const sendEmail = async (to, subject, message, type = "default") => {
       from: `"Volunteer App" <${process.env.EMAIL_USER}>`,
       to,
       subject,
-      text: message, // النص العادي (للدعم)
-      html: emailTemplate, // HTML متجاوب وجميل
+      text: message, 
+      html: emailTemplate, 
     };
 
     const info = await transporter.sendMail(mailOptions);

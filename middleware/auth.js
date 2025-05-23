@@ -10,9 +10,9 @@ module.exports = (req, res, next) => {
 
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    console.log("Decoded JWT:", decoded); // 🔹 لمعرفة البيانات المخزنة في التوكن
+    console.log("Decoded JWT:", decoded);
 
-    req.user = decoded; // ✅ حفظ بيانات المستخدم في `req.user`
+    req.user = decoded; 
     next();
   } catch (error) {
     console.error("JWT Verification Error:", error);
